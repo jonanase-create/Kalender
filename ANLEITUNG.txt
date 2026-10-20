@@ -1,0 +1,77 @@
+TEAM-KALENDER – EINRICHTUNG
+===========================
+
+0) AUSPROBIEREN (ohne Einrichtung)
+   index.html im Browser öffnen → "Demo ohne Datenbank ansehen".
+   Profil wählen: Anna (Admin, Demo-PIN 1234), Max/Lena (Teilnehmer), Tom (Zuschauer).
+
+ROLLEN
+   Admin       alles + Personen anlegen/entfernen, Rollen und PINs vergeben
+   Teilnehmer  Termine, Wochenplan, Projekte, Einkauf bearbeiten; Einladungen beantworten
+   Zuschauer   nur lesen
+
+A) GEMEINSAME DATENBANK ANLEGEN  (ca. 10 Minuten, einmalig, kostenlos)
+ 1. https://supabase.com → kostenlos registrieren → "New project"
+    Name z. B. team-kalender, Region "Frankfurt (eu-central-1)", Passwort vergeben.
+ 2. Links "SQL Editor" → "New query" → Inhalt von supabase-setup.sql einfügen → "Run".
+    Es erscheint "Success. No rows returned". Das legt auch den Speicher
+    "anhaenge" für Fotos & Dateien an (kostenlos: 1 GB).
+    UPDATE einer bestehenden Installation: Skript einfach erneut ausführen –
+    vorhandene Daten bleiben erhalten.
+ 3. "Authentication" → "Sign In / Providers": "Allow new users to sign up" AUSSCHALTEN.
+ 4. "Authentication" → "Users" → "Add user" → "Create new user":
+    EIN gemeinsames Team-Konto anlegen (z. B. deine E-Mail + starkes Passwort),
+    "Auto Confirm User" anhaken. Das ist der Team-Zugang für alle Geräte.
+ 5. "Project Settings" → "API": "Project URL" und "anon public" Key kopieren.
+
+B) APP KONFIGURIEREN
+ 6. index.html mit einem Texteditor öffnen, ganz oben bei CONFIG url und key eintragen.
+    (Alternativ fragt die App beim ersten Start danach – dann aber auf jedem Gerät.)
+
+C) VERÖFFENTLICHEN
+ 7. Den ganzen Ordner auf https://app.netlify.com/drop ziehen.
+ 8. In Supabase → Authentication → "URL Configuration" → "Site URL" die
+    Netlify-Adresse eintragen (wichtig für "Passwort vergessen").
+
+D) ERSTER START
+ 9. App öffnen → Team-Zugang eingeben → eigenes Profil anlegen (du wirst Admin).
+10. Unter "Team" die anderen drei Personen hinzufügen, Rollen setzen,
+    bei Bedarf PINs vergeben. Den Team-Zugang an das Team weitergeben.
+
+E) AUFS IPHONE
+11. Adresse in Safari öffnen → Team-Zugang eingeben (nur einmal) →
+    Teilen → "Zum Home-Bildschirm". Beim Öffnen nur noch Profil antippen (+ ggf. PIN).
+
+BEDIENUNG – DAS WICHTIGSTE
+   Tag antippen (Monatsansicht)  → Tagesansicht dieses Tages
+   + in einer Tageszelle (PC)    → neuer Termin an diesem Tag
+   Freie Stelle im Zeitraster    → neuer Termin zu dieser Uhrzeit
+   Wochenleiste in der Tagesansicht → schnell zwischen Tagen springen
+   Wischen links/rechts          → blättern
+   Avatar oben rechts (iPhone)   → Person wechseln
+
+SCHNELL-EINGABE – BEISPIELE
+   Meeting mit Lena morgen 14 Uhr
+   Workshop Fr 9-12 mit allen
+   Zahnarzt 23.10. 8:30 1h privat
+   Urlaub 3.11.-7.11.
+   Enter = sofort anlegen · Tab = erst Details öffnen
+
+TASTENKÜRZEL (Computer)
+   N neuer Termin · / Schnell-Eingabe · ← → blättern · T heute
+   M Monat · W Woche · D Tag · L Liste · Esc schließen · Strg+Enter speichern
+
+FOTOS & DATEIEN
+   Bis zu 10 Dateien pro Termin. Auf dem iPhone: "Hinzufügen" → Fotomediathek,
+   Foto aufnehmen oder Datei auswählen. Fotos werden automatisch verkleinert
+   (ca. 0,3–1 MB). Im Demo-Modus ist der Platz stark begrenzt.
+
+HINWEISE
+ - Ohne PIN kann jede Person mit Team-Zugang ein Profil auswählen.
+   Für Admin-Profile ist eine PIN dringend empfohlen.
+ - Nach 5 falschen PIN-Eingaben ist das Profil 5 Minuten gesperrt.
+ - Kostenloser Supabase-Tarif: Projekt pausiert nach ca. 1 Woche ohne Nutzung;
+   im Dashboard mit "Restore" wieder starten.
+ - "Private" Termine sieht man in der App nur als "Belegt"; technisch können sie
+   alle mit Team-Zugang in der Datenbank lesen.
+ - Keine dienstlichen/vertraulichen Firmendaten speichern.
